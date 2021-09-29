@@ -12,7 +12,7 @@ class OrderBooksController < ApplicationController
     if @order_book.save
       redirect_to order_books_path, notice: 'Order book was successfully created.'
     else
-      render :new
+      render :index
     end
   end
 
