@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bond type:</strong>
+  <%= @order_book.bond_type %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @order_book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @order_book.author %>
+</p>
+
+<p>
+  <strong>Edition:</strong>
+  <%= @order_book.edition %>
+</p>
+
+<p>
+  <strong>Issn:</strong>
+  <%= @order_book.issn %>
+</p>
+
+<p>
+  <strong>Year publication:</strong>
+  <%= @order_book.year_publication %>
+</p>
+
+<p>
+  <strong>Publishing company:</strong>
+  <%= @order_book.publishing_company %>
+</p>
+
+<%= link_to 'Edit', edit_order_book_path(@order_book) %> |
+<%= link_to 'Back', order_books_path %>

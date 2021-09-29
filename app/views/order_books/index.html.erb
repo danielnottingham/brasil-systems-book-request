@@ -1,0 +1,96 @@
+<p id="notice"><%= notice %></p>
+
+<h1><i class="fas fa-bookmark"></i> Solicitação de Livros</h1>
+<hr />
+
+<%= form_with(model: @order_book) do |form| %>
+  <% if @order_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order_book.errors.count, "error") %> prohibited this order_book from being saved:</h2>
+
+      <ul>
+        <% @order_book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <strong><%= form.label :bond_type %></strong>
+    <%= form.select :bond_type, OrderBook.bonds.keys.to_a, {prompt: "Selecione o vínculo"}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :title %></strong>
+    <%= form.text_field :title, class: "form-control", placeholder: "Digite o título do livro" %>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :author %></strong>
+    <%= form.text_field :author, class: "form-control", placeholder: "Digite o autor do livro" %>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :edition %></strong>
+    <%= form.number_field :edition, class: "form-control", placeholder: "Digite a edição do livro", min: 1 %>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :issn %></strong>
+    <%= form.number_field :issn, class: "form-control", placeholder: "Digite o ISSN do livro", min: 1 %>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :year_publication %></strong>
+    <%= form.date_select :year_publication, { start_year: 1900, end_year: 2019 }, { class: "datepicker" } %>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :publishing_company %></strong>
+    <%= form.text_field :publishing_company, class: "form-control", placeholder: 'Digite a editora do livro' %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit 'Solicitar Livro', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<hr />
+
+
+<h2><i class="fas fa-book-reader"></i> Tabela de Solicitação</h2>
+<hr />
+<table class="table table-striped">
+  <thead class="table-dark" >
+    <tr>
+      <th>Vínculo</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Edição</th>
+      <th>ISSN</th>
+      <th>Ano da Publicação</th>
+      <th>Editora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_books.each do |order_book| %>
+      <tr>
+        <td> <strong><%= order_book.bond_type.capitalize %></strong></td>
+        <td><%= order_book.title %></td>
+        <td><%= order_book.author %></td>
+        <td><%= order_book.edition %></td>
+        <td><%= order_book.issn %></td>
+        <td><%= order_book.year_publication %></td>
+        <td><%= order_book.publishing_company %></td>
+        <td><%= button_to 'Deletar', order_book, method: :delete, data: { confirm: 'Voce tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
