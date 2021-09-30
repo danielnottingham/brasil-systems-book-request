@@ -1,0 +1,13 @@
+'pt-BR':
+  activerecord:
+    models:
+      order_book: Solicitação de Livro
+    attributes:
+      order_book:
+        bond_type: "Tipo de vínculo"
+        title: "Título do livro"
+        author: "Autor do livro"
+        edition: "Edição"
+        issn: "ISSN"
+        year_publication: "Ano da publicação"
+        publishing_company: "Editora"
