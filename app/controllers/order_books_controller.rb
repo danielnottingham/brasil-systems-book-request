@@ -7,6 +7,7 @@ class OrderBooksController < ApplicationController
   end
 
   def create
+    @order_books = OrderBook.all
     @order_book = OrderBook.new(order_book_params)
 
     if @order_book.save
